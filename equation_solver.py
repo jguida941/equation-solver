@@ -17,10 +17,15 @@ from abc import ABC, abstractmethod
 class Equation(ABC):  # Make sure to inherit from ABC
     """Contract: subclasses must implement solve() and analyze()."""
 
+    # Annotate a variable to indicate its type.
+    # Python recognizes data types at runtime, but type hints
+    # help other developers understand what kind of data is expected.
+    degree: int  
+
     # An interface (abstract base class) can also define regular methods
     # that are inherited by concrete classes.
     # A concrete class is one that can be instantiated
-    # (i.e., you can actually create objects from it).
+    # (meaning you can actually create objects from it).
     def __init__(self):
         pass  # placeholder so the file runs
 
