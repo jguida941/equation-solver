@@ -1,6 +1,7 @@
 # Equation Solver Companion
 
-This repository accompanies the FreeCodeCamp project **“Python: Learn Interfaces by Building an Equation Solver”**. The goal is to provide heavily annotated starter code that mirrors the FCC instructions while adding extra commentary, tips, and quick references so you can focus on the learning objective instead of flipping between the lesson and your editor.
+This repository accompanies the FreeCodeCamp project **“Python: Learn Interfaces by Building an Equation Solver”**. <br>
+The goal is to provide heavily annotated starter code that mirrors the FCC instructions while adding extra commentary, tips, and quick references so you can focus on the learning objective instead of flipping between the lesson and your editor.
 
 ## What's Inside
 - `equation_solver.py` – a minimal example of using Python's `abc` module to mimic interfaces, with inline explanations that expand on each FCC step.
