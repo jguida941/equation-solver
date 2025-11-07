@@ -27,7 +27,6 @@ class Equation(ABC):  # Make sure to inherit from ABC
     # @abstractmethod marks a method that has no implementation here.
     # It forces any subclass to write its own version.
     # Think of it like a "must-do" checklist for child classes.
-
     @abstractmethod
     def solve(self):
         """Compute and return the solution."""
