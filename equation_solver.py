@@ -20,7 +20,7 @@ class Equation(ABC):  # Make sure to inherit from ABC
     # Annotate a variable to indicate its type.
     # Python recognizes data types at runtime, but type hints
     # help other developers understand what kind of data is expected.
-    degree: int  
+    degree: int
 
     # An interface (abstract base class) can also define regular methods
     # that are inherited by concrete classes.
@@ -28,6 +28,12 @@ class Equation(ABC):  # Make sure to inherit from ABC
     # (meaning you can actually create objects from it).
     def __init__(self):
         pass  # placeholder so the file runs
+
+    # Advanced: this special method is called automatically
+    # whenever a subclass is created.
+    # It allows you to customize or track subclass behavior.
+    def __init_subclass__(cls):
+        pass
 
     # @abstractmethod marks a method that has no implementation here.
     # It forces any subclass to write its own version.
