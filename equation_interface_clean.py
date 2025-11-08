@@ -6,9 +6,12 @@ class Equation(ABC):
     degree: int
 
     def __init__(self, *args):
-        pass
+        """Make sure number of args matches degree + 1."""
+        if len(args) != self.degree + 1:
+            raise ValueError(f"'{self.__class__.__name__}' object takes {self.degree + 1} positional arguments but {len(args)} were given")
 
     def __init_subclass__(cls):
+        """Ensure subclasses define the 'degree' attribute."""
         if not hasattr(cls, "degree"):
             raise AttributeError(f"Subclass '{cls.__name__}' missing required 'degree' attribute")
 

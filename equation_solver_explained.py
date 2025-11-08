@@ -33,7 +33,13 @@ class Equation(ABC):  # Make sure to inherit from ABC
     def __init__(self, *args):  # You need be able to pass a variable number of arguments
                                 # We use args and * to accept any # of positional arguments
 
-        pass  # placeholder so the file runs
+        # A linear equation (degree 1) has 2 coefficients:
+        # one for x¹ (e.g., 4 in 4x) and one for x⁰ (the constant term, e.g., 5)
+        # Example: 4x + 5 = 0  →  LinearEquation(4, 5)
+        # So we must check that the number of arguments matches degree + 1
+        if len(args) != self.degree + 1:
+            raise ValueError (f"'{self.__class__.__name__}' object takes {self.degree + 1} positional arguments but {len(args)} were given")
+
 
     # Advanced: this special method is called automatically
     # whenever a subclass of this class is created.
