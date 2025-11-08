@@ -10,6 +10,11 @@ class Equation(ABC):
         if len(args) != self.degree + 1:
             raise ValueError(f"'{self.__class__.__name__}' object takes {self.degree + 1} positional arguments but {len(args)} were given")
 
+        """Ensure all coefficients are numbers (int or float)."""
+        for arg in args:
+            if not isinstance(arg, (int, float)):
+                raise TypeError(f"All coefficients must be int or float, got {type(arg).__name__}")
+
     def __init_subclass__(cls):
         """Ensure subclasses define the 'degree' attribute."""
         if not hasattr(cls, "degree"):
@@ -34,3 +39,5 @@ class LinearEquation(Equation):
 
     def analyze(self):
         pass
+
+lin_eq = LinearEquation(2,3)
