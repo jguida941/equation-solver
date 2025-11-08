@@ -8,6 +8,7 @@
 # ================= IMPORTS =================
 from abc import ABC, abstractmethod
 
+
 # ================= INTERFACE DEFINITION =================
 
 # Python doesn't have a native `interface` keyword
@@ -28,8 +29,10 @@ class Equation(ABC):  # Make sure to inherit from ABC
     # that are inherited by concrete classes
     # A concrete class is one that can be instantiated
     # (meaning you can actually create objects from it)
-    def __init__(self,*args): # You need be able to pass a variable number of arguments
-                              # We use args and * to accept any # of positional arguments
+
+    def __init__(self, *args):  # You need be able to pass a variable number of arguments
+                                # We use args and * to accept any # of positional arguments
+
         pass  # placeholder so the file runs
 
     # Advanced: this special method is called automatically
@@ -37,12 +40,11 @@ class Equation(ABC):  # Make sure to inherit from ABC
     # It allows customization or tracking of subclass behavior.
     # 'cls' refers to the new subclass being defined.
     def __init_subclass__(cls):
-
         # hasattr returns a boolean indicating if the class has the specified attribute
         # we are looking for the 'degree' attribute
         if not hasattr(cls, 'degree'):
             # AttributeError warns the developer that they forgot to define 'degree'
-            raise AttributeError (f"Cannot create '{cls.__name__}' class: missing required attribute 'degree'")
+            raise AttributeError(f"Cannot create '{cls.__name__}' class: missing required attribute 'degree'")
 
     # @abstractmethod marks a method that has no implementation here
     # It forces any subclass to write its own version
@@ -56,6 +58,7 @@ class Equation(ABC):  # Make sure to inherit from ABC
     def analyze(self):
         """Return quick facts (e.g., {'type': 'linear'})."""
         pass  # placeholder
+
 
 # ================= SUBCLASS EXAMPLE =================
 
@@ -81,8 +84,4 @@ class LinearEquation(Equation):
 # ================= INSTANCES =================
 
 # lin_eq = LinearEquation()  # commented out: must implement all abstract methods
-<<<<<<< HEAD
 # eq = Equation()  # commented out: abstract classes cannot be instantiated directly
-=======
-# eq = Equation()  # commented out: abstract classes cannot be instantiated directly
->>>>>>> 0340025708493154ea85a91d23c01469e5175068
