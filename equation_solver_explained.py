@@ -28,10 +28,8 @@ class Equation(ABC):  # Make sure to inherit from ABC
     # that are inherited by concrete classes
     # A concrete class is one that can be instantiated
     # (meaning you can actually create objects from it)
-
     def __init__(self,*args): # You need be able to pass a variable number of arguments
                               # We use args and * to accept any # of positional arguments
-
         pass  # placeholder so the file runs
 
     # Advanced: this special method is called automatically
@@ -83,4 +81,8 @@ class LinearEquation(Equation):
 # ================= INSTANCES =================
 
 # lin_eq = LinearEquation()  # commented out: must implement all abstract methods
+<<<<<<< HEAD
 # eq = Equation()  # commented out: abstract classes cannot be instantiated directly
+=======
+# eq = Equation()  # commented out: abstract classes cannot be instantiated directly
+>>>>>>> 0340025708493154ea85a91d23c01469e5175068
