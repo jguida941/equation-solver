@@ -51,12 +51,43 @@ class Equation(ABC):  # Make sure to inherit from ABC
 
         if len(args) != self.degree + 1:
 
+
             # ================= RAISE TYPE ERROR =================
 
-            # A TypeError indicates that the function received an argument of the wrong type
-            raise (TypeError
-                   (f"'{self.__class__.__name__}' object takes {self.degree + 1} "f"positional arguments but {len(args)} were given"))
+        # A TypeError indicates that the function received an argument of the wrong type
+            raise TypeError(
+                f"'Equation' object takes {self.degree + 1} positional arguments but {len(args)} were given"
+            )
 
+
+        # =================== USING ANY() ===================
+
+        # You can use Pythons built in any() function to simplify type checking
+         # any() returns True if at least one element of the iterable is true
+
+        if any(not isinstance(arg, (int, float)) for arg in args):
+
+
+            # ================= RAISE TYPE ERROR =================
+
+            raise TypeError ("Coefficients must be of type 'int' or 'float'")
+
+
+            # ================= CHECK HIGHEST DEGREE COEFFICIENT =================
+        if args[0] == 0:
+
+
+            # ================= RAISE VALUE ERROR =================
+
+            raise ValueError('Highest degree coefficient must be different from zero')
+
+
+        # ==== COMMENTED OUT FOR ANY() APPROACH ====
+
+        # ================= isinstance() EXAMPLE ==============
+
+        # isinstance() works but any() is more concise
+        # this shows how you would do it using isinstance()
 
         # ================= CHECK DEGREE TYPE =================
 
@@ -69,16 +100,15 @@ class Equation(ABC):  # Make sure to inherit from ABC
         # isinstance(LinearEquation(2, 3), Equation) → True
 
         # Ensure degree is an integer
-        if not isinstance(self.degree, int):
-            raise TypeError(f"'degree' attribute must be of type int, got {type(self.degree).__name__}")
+        # if not isinstance(self.degree, int):
+            # raise TypeError(f"'degree' attribute must be of type int, got {type(self.degree).__name__}")
 
         # Ensure all passed coefficients are numeric
-        for arg in args:
-            if not isinstance(arg, (int, float)):
+        # for arg in args:
+            # if not isinstance(arg, (int, float)):
 
                 # ================= RAISE TYPE ERROR =================
-                raise TypeError(f"All coefficients must be int or float, got {type(arg).__name__}")
-
+                # raise TypeError(f"All coefficients must be int or float, got {type(arg).__name__}")
 
 
     # ==================== SUBCLASS INIT CHECK =================

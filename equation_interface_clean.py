@@ -8,17 +8,22 @@ class Equation(ABC):
     def __init__(self, *args):
         """Make sure number of args matches degree + 1."""
         if len(args) != self.degree + 1:
-            raise ValueError(f"'{self.__class__.__name__}' object takes {self.degree + 1} positional arguments but {len(args)} were given")
+            raise TypeError(
+                f"'Equation' object takes {self.degree + 1} positional arguments but {len(args)} were given"
+            )
 
-        """Ensure all coefficients are numbers (int or float)."""
-        for arg in args:
-            if not isinstance(arg, (int, float)):
-                raise TypeError(f"All coefficients must be int or float, got {type(arg).__name__}")
+        """Ensure all args are int or float."""
+        if any (not isinstance(arg, (int, float)) for arg in args):
+            raise TypeError("Coefficients must be of type 'int' or 'float'")
+
+        """Check for highest degree coefficient not being zero"""
+        if args[0] == 0:
+            raise ValueError('Highest degree coefficient must be different from zero')
 
     def __init_subclass__(cls):
         """Ensure subclasses define the 'degree' attribute."""
         if not hasattr(cls, "degree"):
-            raise AttributeError(f"Subclass '{cls.__name__}' missing required 'degree' attribute")
+            raise AttributeError(f"Cannot create '{cls.__name__}' class: missing required attribute 'degree'")
 
     @abstractmethod
     def solve(self):
