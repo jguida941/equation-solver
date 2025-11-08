@@ -8,7 +8,7 @@ This repository accompanies the FreeCodeCamp project **“Python: Learn Interfac
 
 ## How to Use
 1. Open `equation_solver_explained.py` while following Step 1 of the FCC lesson: <https://www.freecodecamp.org/learn/scientific-computing-with-python/learn-interfaces-by-building-an-equation-solver/step-1>. Read the comments before each block - they summarize the intent of the corresponding lesson step and explain why each piece of syntax is there.
-2. When you’re ready to build without the extra narration, switch to `equation_interface_clean.py`. It has the same structure, so you can copy over your implementations or retype them for practice.
+2. When you're ready to build without the extra narration, switch to `equation_interface_clean.py`. It has the same structure, so you can copy over your implementations or retype them for practice.
 3. Replace the placeholder `pass` statements with your own logic as you progress through the course challenges. Keep both files in sync if you like comparing the verbose and clean versions.
 
 ## Running the Files
