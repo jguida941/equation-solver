@@ -68,6 +68,7 @@ class Equation(ABC):  # Make sure to inherit from ABC
         if not hasattr(cls, 'degree'):
 
             # ================= RAISE ATTRIBUTE ERROR =================
+
             # AttributeError warns the developer that they forgot to define 'degree'
             raise AttributeError(f"Cannot create '{cls.__name__}' class: missing required attribute 'degree'")
 
