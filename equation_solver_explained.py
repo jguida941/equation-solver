@@ -74,12 +74,14 @@ class Equation(ABC):  # Make sure to inherit from ABC
 
 
             # ================= CHECK HIGHEST DEGREE COEFFICIENT =================
+
         if args[0] == 0:
 
 
             # ================= RAISE VALUE ERROR =================
 
             raise ValueError('Highest degree coefficient must be different from zero')
+
 
         # ================= STORE COEFFICIENTS EXPLANATION =================
 
@@ -95,11 +97,15 @@ class Equation(ABC):  # Make sure to inherit from ABC
         # When you call LinearEquation(2, 4):
         #   len(args) = 2
         #   enumerate(args) gives (0, 2) and (1, 4)
-        #     → 2 is at index 0, 4 is at index 1
+        #    → 2 is at index 0, 4 is at index 1
+
         # enumerate(args) provides both position and value
         #   e.g. (0, 2) → first coefficient, (1, 4) → second coefficient
 
         # Step-by-step:
+        # n means the index (position) of the coefficient in args
+        # arg means the actual coefficient value
+
         #   n = 0, arg = 2 → 2x¹  (from pair (0, 2))
         #   n = 1, arg = 4 → 4x⁰  (from pair (1, 4))
 
@@ -110,7 +116,6 @@ class Equation(ABC):  # Make sure to inherit from ABC
 
 
         # ================= STORE COEFFICIENTS =================
-
 
         self.coefficients = {(len(args) - n - 1): arg for n, arg in enumerate(args)}
 
