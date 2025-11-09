@@ -30,6 +30,12 @@ class Equation(ABC):
                 f"Cannot create '{cls.__name__}' class: missing required attribute 'degree'"
             )
 
+    def __str__(self):
+        terms = []
+        # join terms to form equation string
+        equation_string = ' '.join(terms)
+        return equation_string
+
     @abstractmethod
     def solve(self):
         pass
@@ -51,3 +57,4 @@ class LinearEquation(Equation):
 
 
 lin_eq = LinearEquation(2, 3)
+print(lin_eq)

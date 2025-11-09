@@ -172,6 +172,16 @@ class Equation(ABC):  # Make sure to inherit from ABC
             raise AttributeError(f"Cannot create '{cls.__name__}' class: missing required attribute 'degree'")
 
 
+    # ==================== STRING REPRESENTATION =================
+
+    # str allows you to return a human-readable string representation of the object
+    def __str__(self):
+        terms = []
+        # join terms by spaces to form equation string by specific formatting
+        equation_string = ' '.join(terms)
+        return equation_string
+
+
     # ==================== ABSTRACT METHODS =================
 
     # @abstractmethod marks a method that has no implementation here
@@ -216,6 +226,7 @@ class LinearEquation(Equation):
         pass  # placeholder
 
 
+
 # ================= INSTANCES =================
 
 # Pass the correct number of args when instantiating (e.g., LinearEquation(2, 3))
@@ -224,5 +235,7 @@ class LinearEquation(Equation):
 
 lin_eq = LinearEquation(2,3)
 
+# prints lin_eq instance;(but only shows the memory address)
+print(lin_eq)
 
 # eq = Equation()  # commented out: abstract classes cannot be instantiated directly
