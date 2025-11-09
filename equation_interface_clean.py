@@ -19,6 +19,7 @@ class Equation(ABC):
         """Check for highest degree coefficient not being zero"""
         if args[0] == 0:
             raise ValueError('Highest degree coefficient must be different from zero')
+        self.coefficients = {len (args) - 1 - i: arg for i, arg in enumerate(args)}
 
     def __init_subclass__(cls):
         """Ensure subclasses define the 'degree' attribute."""
@@ -28,7 +29,6 @@ class Equation(ABC):
     @abstractmethod
     def solve(self):
         pass
-
     @abstractmethod
     def analyze(self):
         pass

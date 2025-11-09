@@ -81,6 +81,39 @@ class Equation(ABC):  # Make sure to inherit from ABC
 
             raise ValueError('Highest degree coefficient must be different from zero')
 
+        # ================= STORE COEFFICIENTS EXPLANATION =================
+
+        # Store coefficients in a dictionary
+        # {(len(args) - n - 1): arg for n, arg in enumerate(args)}
+
+        # Actual Explanation (unlike FCC):
+        # For the equation 2x + 4 = 0, there are two coefficients:
+        #   2 → for x¹
+        #   4 → for x⁰
+        # That corresponds to LinearEquation(2, 4).
+
+        # When you call LinearEquation(2, 4):
+        #   len(args) = 2
+        #   enumerate(args) gives (0, 2) and (1, 4)
+        #     → 2 is at index 0, 4 is at index 1
+        # enumerate(args) provides both position and value
+        #   e.g. (0, 2) → first coefficient, (1, 4) → second coefficient
+
+        # Step-by-step:
+        #   n = 0, arg = 2 → 2x¹  (from pair (0, 2))
+        #   n = 1, arg = 4 → 4x⁰  (from pair (1, 4))
+
+        # Final dictionary: {1: 2, 0: 4}
+        # Meaning:
+        #   coefficient for x¹ is 2
+        #   coefficient for x⁰ is 4
+
+
+        # ================= STORE COEFFICIENTS =================
+
+
+        self.coefficients = {(len(args) - n - 1): arg for n, arg in enumerate(args)}
+
 
         # ==== COMMENTED OUT FOR ANY() APPROACH ====
 
@@ -180,8 +213,11 @@ class LinearEquation(Equation):
 
 # ================= INSTANCES =================
 
-lin_eq = LinearEquation(2,3) # Pass the correct number of args when instantiating (e.g., LinearEquation(2, 3))
-                                   # or you will get a TypeError because of line 40 where we check args length
-                                   # and line 42 where we raise the TypeError
+# Pass the correct number of args when instantiating (e.g., LinearEquation(2, 3))
+# or you will get a TypeError because of line 40 where we check args length
+# and line 42 where we raise the TypeError
+
+lin_eq = LinearEquation(2,3)
+
 
 # eq = Equation()  # commented out: abstract classes cannot be instantiated directly
