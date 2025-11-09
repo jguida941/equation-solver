@@ -6,29 +6,34 @@ class Equation(ABC):
     degree: int
 
     def __init__(self, *args):
-        """Make sure number of args matches degree + 1."""
+        # Verify argument count
         if len(args) != self.degree + 1:
             raise TypeError(
-                f"'Equation' object takes {self.degree + 1} positional arguments but {len(args)} were given"
+                f"'{self.__class__.__name__}' object takes {self.degree + 1} positional arguments "
+                f"but {len(args)} were given"
             )
 
-        """Ensure all args are int or float."""
-        if any (not isinstance(arg, (int, float)) for arg in args):
+        # Validate coefficient types
+        if any(not isinstance(arg, (int, float)) for arg in args):
             raise TypeError("Coefficients must be of type 'int' or 'float'")
 
-        """Check for highest degree coefficient not being zero"""
+        # Ensure leading coefficient is nonzero
         if args[0] == 0:
-            raise ValueError('Highest degree coefficient must be different from zero')
-        self.coefficients = {len (args) - 1 - i: arg for i, arg in enumerate(args)}
+            raise ValueError("Highest degree coefficient must be different from zero")
+
+        # Store coefficients as {degree: value}
+        self.coefficients = {len(args) - 1 - i: arg for i, arg in enumerate(args)}
 
     def __init_subclass__(cls):
-        """Ensure subclasses define the 'degree' attribute."""
         if not hasattr(cls, "degree"):
-            raise AttributeError(f"Cannot create '{cls.__name__}' class: missing required attribute 'degree'")
+            raise AttributeError(
+                f"Cannot create '{cls.__name__}' class: missing required attribute 'degree'"
+            )
 
     @abstractmethod
     def solve(self):
         pass
+
     @abstractmethod
     def analyze(self):
         pass
@@ -36,7 +41,6 @@ class Equation(ABC):
 
 class LinearEquation(Equation):
     """Concrete class for a linear equation (degree = 1)."""
-
     degree = 1
 
     def solve(self):
@@ -45,4 +49,5 @@ class LinearEquation(Equation):
     def analyze(self):
         pass
 
-lin_eq = LinearEquation(2,3)
+
+lin_eq = LinearEquation(2, 3)
